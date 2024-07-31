@@ -9,6 +9,25 @@ function Holiday() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selected, setSelected] = useState(0);
+
+    function nextHoliday() {
+        setSelected(prevValue =>{
+            if (prevValue === data.data.length - 1) {
+                return 0;
+            } else {
+                return prevValue + 1;
+            }
+        });
+    }
+    function previousHoliday() {
+        setSelected(prevValue =>{
+            if (prevValue === 0) {
+                return data.data.length - 1;
+            } else {
+                return prevValue - 1;
+            }
+        });
+    }
     
     async function getData() {
         try {
@@ -41,7 +60,7 @@ function Holiday() {
                     <h1 className="strong text-white">Le Nostre Vacande</h1>
                     <div className="underline rounded"></div>
                 </div>
-                <SingleHoliday {...data.data[selected]}/>
+                <SingleHoliday {...data.data[selected]} next={nextHoliday} previous={previousHoliday}/>
             </>
         );
     } else {

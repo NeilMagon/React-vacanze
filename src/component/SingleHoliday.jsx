@@ -1,7 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
-function SingleHoliday({img, titolo, durata, descrizione, prezzo}) {
+function SingleHoliday({img, titolo, durata, descrizione, prezzo, next, previous}) {
     return(
         <div>
             <div className="img-container mt-4 shadow">
@@ -14,10 +13,10 @@ function SingleHoliday({img, titolo, durata, descrizione, prezzo}) {
                         <p>{(prezzo / 100).toFixed(2)} €</p>
                     </div>
                     <div className="d-flex justify-content-between ">
-                        <button className="ms-btn">
+                        <button className="ms-btn" onClick={previous}>
                             <i class="fa-solid fa-caret-left"></i>
                         </button>
-                        <button className="ms-btn">
+                        <button className="ms-btn" onClick={next}>
                             <i class="fa-solid fa-caret-right"></i>
                         </button>
                     </div>
