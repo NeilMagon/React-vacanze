@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from 'axios';
+import SingleHoliday from './SingleHoliday'
 
 const url = "https://react--course-api.herokuapp.com/api/v1/data/vacanze";
 
 function Holiday() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selected, setSelected] = useState(0);
     
     async function getData() {
         try {
@@ -34,9 +36,10 @@ function Holiday() {
     
     if (data.success) {
         return(
-            <div className="text-center">
+            <div className="text-center ">
                 <h1 className="strong text-white">Le Nostre Vacande</h1>
                 <div className="underline rounded"></div>
+                <SingleHoliday {...data.data[selected]}/>
             </div>
         );
     } else {
