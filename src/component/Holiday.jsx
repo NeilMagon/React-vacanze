@@ -36,11 +36,13 @@ function Holiday() {
     
     if (data.success) {
         return(
-            <div className="text-center ">
-                <h1 className="strong text-white">Le Nostre Vacande</h1>
-                <div className="underline rounded"></div>
+            <>
+                <div className="text-center">
+                    <h1 className="strong text-white">Le Nostre Vacande</h1>
+                    <div className="underline rounded"></div>
+                </div>
                 <SingleHoliday {...data.data[selected]}/>
-            </div>
+            </>
         );
     } else {
         return (
